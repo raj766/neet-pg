@@ -1,0 +1,21 @@
+import Link from "next/link";
+import { ArrowUpRight, BookOpen, CalendarCheck, CheckCircle2, ClipboardList, FileCheck2, Info, Landmark, ShieldCheck } from "lucide-react";
+import { SectionHeading } from "@/components/SectionHeading";
+
+const docs = ["NEET PG admit card and scorecard", "Valid photo identification", "MBBS degree or provisional certificate", "Internship completion certificate", "Medical registration certificate, where applicable", "Category / EWS certificate, if applicable", "State domicile documents, if required", "Recent passport-size photographs"];
+const steps = [
+  { icon: BookOpen, title: "Understand your options", text: "Review the counselling process, eligibility criteria, quota rules and the current official information bulletin." },
+  { icon: ClipboardList, title: "Prepare your preferences", text: "Research colleges and courses, compare available information and create a considered preference list." },
+  { icon: FileCheck2, title: "Keep documents ready", text: "Prepare the documents relevant to your circumstances and verify requirements in the current official notice." },
+  { icon: CalendarCheck, title: "Track official updates", text: "Check official websites regularly for schedules, registration windows, seat matrices and round-specific instructions." },
+];
+export default function CounsellingGuidePage() {
+  return <div className="page-shell"><section className="page-hero"><div className="container page-hero-inner"><div><span className="eyebrow">PREPARE WITH CLARITY</span><h1>NEET PG counselling guide</h1><p>A practical starting point to understand the process, organize documents and prepare your college preferences.</p></div><div className="page-hero-art"><ClipboardList size={48}/></div></div></section>
+    <section className="container content-section"><div className="guide-layout"><div><SectionHeading eyebrow="YOUR CHECKLIST" title="From research to readiness" description="Use these general steps to organize your preparation. Always follow the latest official instructions."/><div className="guide-steps">{steps.map(({icon: Icon, title, text}, i) => <article className="guide-step" key={title}><span className="guide-step-icon"><Icon size={22}/></span><div><span className="step-kicker">STEP 0{i+1}</span><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+      <div className="info-panel"><Info size={18}/><div><strong>Important</strong><p>Rules, dates, eligibility and counselling procedures may change by year and authority. This guide is general information, not official or legal advice.</p></div></div>
+      <SectionHeading eyebrow="COMMON QUESTIONS" title="Counselling FAQs"/>
+      <div className="faq-list guide-faq"><details><summary>What is the difference between All India and state counselling?</summary><p>They are separate counselling processes with their own eligibility, seat pools and procedures. Check the relevant authority's current information bulletin.</p></details><details><summary>Can I rely only on a college prediction?</summary><p>No. Use predictions only as a research aid. Confirm eligibility, seat availability, fees, bond conditions and official cutoffs before making choices.</p></details><details><summary>When should I prepare documents?</summary><p>Start early, but use the current official checklist to confirm which documents, formats and validity requirements apply to you.</p></details></div>
+      </div><aside className="guide-sidebar"><div className="surface-card checklist-card"><div className="sidebar-title"><span className="benefit-icon"><FileCheck2 size={21}/></span><div><h3>Document checklist</h3><p>General items to review</p></div></div>{docs.map(doc => <div className="checklist-item" key={doc}><CheckCircle2 size={16}/><span>{doc}</span></div>)}</div>
+      <div className="surface-card official-card"><span className="benefit-icon"><Landmark size={21}/></span><h3>Use official sources</h3><p>Confirm current notices and procedures directly with the relevant counselling authority.</p><a href="https://mcc.nic.in/" target="_blank" rel="noreferrer" className="text-link">Medical Counselling Committee <ArrowUpRight size={14}/></a><a href="https://natboard.edu.in/" target="_blank" rel="noreferrer" className="text-link">National Board of Examinations <ArrowUpRight size={14}/></a></div></aside></div></section>
+  </div>;
+}
