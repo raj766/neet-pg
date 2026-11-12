@@ -1,19 +1,22 @@
 "use client";
 import { useState } from "react";
 
-const reviews = [
+type ReviewItem = [name: string, text: string, when: string];
+
+const reviews: ReviewItem[] = [
   ["r p", "Had a great experience with India To International for NEET counseling. Even though their name highlights international admissions, their expertise in domestic medical counseling is equally strong.", "a month ago"],
   ["Sejal Patnaik", "I had a really positive experience with Navin sir and Vikas sir. They were patient, understanding, and genuinely supportive throughout the process. Their guidance helped me gain better clarity.", "2 months ago"],
   ["Surya Senthil", "I'm really grateful that I found Mr. Navin during my PG counselling. He is such a genuine human being and his services are top notch. He is not only knowledgeable but very supportive.", "a month ago"],
   ["Adhishri Karbhari", "I had a very positive experience with the team during my MDS counselling process. They are professional, patient, approachable, and genuinely committed to helping students decide.", "2 months ago"],
   ["Rahul M", "Clear choice-filling strategy and honest advice at every round. Highly recommended for MCC and state counselling.", "3 months ago"],
 ];
-const bars = [["5", 100], ["4", 0], ["3", 0], ["2", 0], ["1", 0]];
-const VISIBLE = 3, STEPS = reviews.length - VISIBLE + 1;
+const bars: [string, number][] = [["5", 100], ["4", 0], ["3", 0], ["2", 0], ["1", 0]];
+const VISIBLE = 3;
+const STEPS = reviews.length - VISIBLE + 1;
 
-export default function Review() {
-  const [pos, setPos] = useState(0);
-  const go = (n) => setPos((n + STEPS) % STEPS);
+export default function Reviews() {
+  const [pos, setPos] = useState<number>(0);
+  const go = (n: number) => setPos((n + STEPS) % STEPS);
   return (
     <section className="section soft">
       <div className="wrap">
